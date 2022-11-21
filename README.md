@@ -1,24 +1,38 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                       |
+| ------------------ | ------ | ----------------------------- |
+| nickname           | string | null: false                   |
+| email              | string | null: false, unique_key: true |
+| encrypted_password | string | null: false                   |
 
-* Ruby version
+### Association
+- has_many : congestions
+- has_many : comments
 
-* System dependencies
+## congestionsテーブル
 
-* Configuration
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| ski_resort_id | integer    | null: false                    |
+| situation     | text       |                                |
+| waiting_id    | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
-* Database creation
+### Association
+- belongs_to : user
+- has_many : comments
 
-* Database initialization
+## commentsテーブル
 
-* How to run the test suite
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| content    | text       | null: false                    |
+| congestion | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- belongs_to :congestion
