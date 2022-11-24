@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_11_24_062530) do
   create_table "congestions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "ski_resort_id", null: false
     t.text "situation"
-    t.integer "waiting_id", null: false
+    t.integer "waiting", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
