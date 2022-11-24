@@ -5,7 +5,7 @@
     スキー場
     <span class="indispensable">必須</span>
   </div>
-  <%= f.collection_select(:ski_resort_id, Ski_Resort.all, :id, :name, {}, {class:"select-box", id:"congestion-ski-resort"}) %>
+  <%= f.collection_select(:ski_resort_id, SkiResort.all, :id, :name, {}, {class:"select-box", id:"congestion-ski-resort"}) %>
   <%# /スキー場名 %>
   <%# 状況 %>
   <div class="items-explain">

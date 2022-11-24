@@ -1,5 +1,6 @@
 class CongestionsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_action, except: [:index, :new, :create]
 
   def index
     @congestion = Congestion.all
@@ -19,12 +20,30 @@ class CongestionsController < ApplicationController
   end
 
   def show
-    @congestion = Congestion.find(params[:id])
     @user = User.find(params[:id])
+  end
+
+  def edit
+    unless @congestion.user_id == current_user.id
+      redirect_to action: :index
+    end
+  end
+
+  def update
+    if @congestion.update(congestion_params)
+      redirect_to congestion_path, method: :get
+    else
+      render :edit
+    end
+
   end
 
   private
   def congestion_params
     params.require(:congestion).permit(:ski_resort_id, :situation, :waiting, :image).merge(user_id: current_user.id)
+  end
+
+  def set_action
+    @congestion = Congestion.find(params[:id])
   end
 end
