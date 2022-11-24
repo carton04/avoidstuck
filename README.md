@@ -18,7 +18,7 @@
 | ------------- | ---------- | ------------------------------ |
 | ski_resort_id | integer    | null: false                    |
 | situation     | text       |                                |
-| waiting_id    | integer    | null: false                    |
+| waiting       | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 
 ### Association
