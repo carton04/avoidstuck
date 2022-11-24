@@ -18,6 +18,11 @@ class CongestionsController < ApplicationController
     end
   end
 
+  def show
+    @congestion = Congestion.find(params[:id])
+    @user = User.find(params[:id])
+  end
+
   private
   def congestion_params
     params.require(:congestion).permit(:ski_resort_id, :situation, :waiting, :image).merge(user_id: current_user.id)

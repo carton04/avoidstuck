@@ -1,0 +1,29 @@
+<main class="main">
+  <div class="inner">
+    <div class="congestion__wrapper">
+      <p class="congestion__hedding">
+        <%= @congestion.ski_resort.name %>
+      </p>
+      <%= link_to "by " + @user.nickname, "#", class: :congestion__user %>
+      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
+      <% if user_signed_in? && current_user.id == @congestion.user_id %>
+        <div class="congestion__manage">
+          <%= link_to "編集する", edit_congestion_path(@congestion.id), class: :congestion__btn %>
+          <%= link_to "削除する", congestion_path(@congestion.id), method: :delete, class: :congestion__btn %>
+        </div>
+      <% end %>
+      <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
+      <div class="congestion__image">
+        <%= image_tag @congestion.image %>
+      </div>
+      <div class="congestion__body">
+        <div class="congestion__detail">
+          <p class="detail__title">状況</p>
+          <p class="detail__message">
+            <%= @congestion.situation %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
