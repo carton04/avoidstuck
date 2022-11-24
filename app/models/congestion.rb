@@ -1,7 +1,7 @@
 class Prototype < ApplicationRecord
   with_options presence: true do
   validates :ski_resort_id, numericality: { other_than: 0 }
-  validates :waiting_id
+  validates :waiting
   validates :image
   end
 
