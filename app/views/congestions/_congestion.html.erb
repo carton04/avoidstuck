@@ -5,8 +5,10 @@
       <%= congestion.situation %>
     </p>
     <% if congestion.image.present? %>
-    <%= link_to image_tag( congestion.image, class: :card__img ), congestion_path(congestion.id), method: :get %>
+    <%= link_to image_tag( congestion.image.variant(resize: '200x200'), class: :card__img ), congestion_path(congestion.id), method: :get %>
     <% end %>
+    <p>
     <%= link_to "by " + congestion.user.nickname, congestion_path(congestion.id), class: :card__user, method: :get %>
+    </p>
   </div>
 </div>

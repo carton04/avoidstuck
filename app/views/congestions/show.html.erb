@@ -14,7 +14,7 @@
       <% end %>
       <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
       <div class="congestion__image">
-        <%= image_tag @congestion.image %>
+        <%= image_tag @congestion.image.variant(resize: '500x500') %>
       </div>
       <div class="congestion__body">
         <div class="congestion__detail">
