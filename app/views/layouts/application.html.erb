@@ -8,31 +8,37 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <header class="header">
-      <div class="inner">
-        <div class="nav">
-          <div class="nav__left">
-            <%= link_to "top", root_path %>
-            <%# link_to image_tag("hoge", class: :logo), root_path %>
-          </div>
-          <% if user_signed_in? %>
-            <div class="nav__right">
-              <%= link_to "ログアウト", destroy_user_session_path, class: :nav__logout %>
-              <%= link_to "スタック投稿", new_congestion_path, class: :nav__btn %>
-            </div>
-          <% else %>
-            <div class="nav__right">
-              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
-              <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
-            </div>
-          <% end %>
+    <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <button type="button" class="btn btn-warning">Sign-up</button>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
     <%= yield %>
     <footer class="footer">
       <p class="copyright">Copyright © AVOID STUCK All rights reserved.</p>
