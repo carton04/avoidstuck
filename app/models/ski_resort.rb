@@ -1,4 +1,4 @@
-class Genre < ActiveHash::Base
+class SkiResort < ActiveHash::Base
   self.data = [
     { id: 0, name: '---' },
     { id: 1, name: 'チャオ御岳スキーリゾート' },
@@ -10,11 +10,11 @@ class Genre < ActiveHash::Base
     { id: 7, name: 'ひるがの高原スキー場' },
     { id: 8, name: '鷲ヶ岳スキー場' },
     { id: 9, name: 'スターシュプール緑風リゾート ひだ流葉' },
-    { id: 10, name: '飛騨かわいスキー場' }
-    { id: 11, name: 'ひだ舟山スノーリゾートアルコピア' }
-    { id: 12, name: '平湯温泉スキー場' }
-    { id: 13, name: '飛騨ほおのき平スキー場' }
-    { id: 14, name: 'モンデウス飛騨位山スノーパーク' }
+    { id: 10, name: '飛騨かわいスキー場' },
+    { id: 11, name: 'ひだ舟山スノーリゾートアルコピア' },
+    { id: 12, name: '平湯温泉スキー場' },
+    { id: 13, name: '飛騨ほおのき平スキー場' },
+    { id: 14, name: 'モンデウス飛騨位山スノーパーク' },
   ]
 
   include ActiveHash::Associations
