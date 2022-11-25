@@ -3,7 +3,7 @@ class CongestionsController < ApplicationController
   before_action :set_action, except: [:index, :new, :create]
 
   def index
-    @congestion = Congestion.all
+    @congestions = Congestion.all
   end
 
   def new
