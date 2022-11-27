@@ -20,7 +20,7 @@ class CongestionsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.new
   end
 
   def edit
@@ -35,12 +35,16 @@ class CongestionsController < ApplicationController
     else
       render :edit
     end
+  end
 
+  def destroy
+    @congestion.destroy
+    redirect_to root_path
   end
 
   private
   def congestion_params
-    params.require(:congestion).permit(:ski_resort_id, :situation, :waiting, :image).merge(user_id: current_user.id)
+    params.require(:congestion).permit(:ski_resort_id, :situation, :waiting, :latitude, :longitude, :image).merge(user_id: current_user.id)
   end
 
   def set_action

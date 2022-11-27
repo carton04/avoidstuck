@@ -4,17 +4,17 @@
       <p class="congestion__hedding">
         <%= @congestion.ski_resort.name %>
       </p>
-      <%= link_to "by " + @user.nickname, "#", class: :congestion__user %>
-      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
+      <%= link_to "by " + @congestion.user.nickname, "#", class: :congestion__user %>
       <% if user_signed_in? && current_user.id == @congestion.user_id %>
         <div class="congestion__manage">
           <%= link_to "編集する", edit_congestion_path(@congestion.id), class: :congestion__btn %>
           <%= link_to "削除する", congestion_path(@congestion.id), method: :delete, class: :congestion__btn %>
         </div>
       <% end %>
-      <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
       <div class="congestion__image">
+        <% if @congestion.image.present? %>
         <%= image_tag @congestion.image.variant(resize: '500x500') %>
+        <% end %>
       </div>
       <div class="congestion__body">
         <div class="congestion__detail">
