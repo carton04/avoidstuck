@@ -12,11 +12,11 @@
     <div class="container px-4 py-5" id="custom-cards">
       <h2 class="pb-2 border-bottom">Stuck</h2>
       <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-        <% @congestions.each do |congestion| %>
-        <div class="col">
-          <div class="card card-cover h-100 w-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
+        <% @congestions.each_with_index do |congestion,i| %>
+        <div class="col"style='width: 50vh; height: 70vh;'>
+          <div class="card card-cover h-100 w-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
             <div class="d-flex flex-column h-100 text-white text-shadow-1">
-              <div id="map"style="height:100vh;width:76vh;"></div>
+              <div id="map<%=i%>" style='width: 100%; height: 500%;'></div>
               <ul class="d-flex align-items-center justify-content-center"style="padding-left: 0px;margin-bottom: 0px;">
                 <li class="d-flex align-items-center me-3">
                   <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
@@ -31,20 +31,23 @@
             </div>
           </div>
         </div>
+        <% end %>
 <script>
     function initMap() {
-      mapPosition = {lat: <%= congestion.latitude %> , lng: <%= congestion.longitude %> };
-      map = new google.maps.Map(document.getElementById('map'), {
-          center: mapPosition,
+      <% @congestions.each_with_index do |congestion,i| %>
+      var latlng = new google.maps.LatLng(<%= congestion.latitude %>,<%= congestion.longitude %>);
+      map = new google.maps.Map(document.getElementById('map<%=i%>'), {
+          center: {lat: <%= congestion.latitude %>, lng: <%= congestion.longitude %>},
           zoom: 9
         });
        marker = new google.maps.Marker({
-          position: mapPosition,
+          position: latlng,
           map: map
         });
-    }
-</script>
       <% end %>
+    }
+
+</script>
       </div>
     </div>
   </main>
