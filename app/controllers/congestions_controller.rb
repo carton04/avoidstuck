@@ -3,7 +3,7 @@ class CongestionsController < ApplicationController
   before_action :set_action, except: [:index, :new, :create]
 
   def index
-    @congestions = Congestion.all
+    @congestions = Congestion.order("created_at DESC")
   end
 
   def new

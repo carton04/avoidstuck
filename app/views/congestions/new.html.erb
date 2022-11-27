@@ -12,13 +12,15 @@ function test2(position) {
 </script>
 
 <body>
-<button onclick="test()">test</button>
   <div class="main">
-    <div class="inner">
-      <div class="form__wrapper">
-      <h2 class="page-heading">スタック情報を入力してください</h2>
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">スタック情報を入力</h2>
+      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
 
       <%= form_with model: @congestion, local: true do |f| %>
+      <button onclick="test()">現在地を取得する</button>
+      <%= f.text_field :latitude, class:"latitude-input", id:"congestion-latitude" %>
+      <%= f.text_field :longitude, class:"longitude-input", id:"congestion-longitude" %>
 
       <%# スキー場名 %>
         <div class="weight-bold-text">
@@ -27,8 +29,6 @@ function test2(position) {
         </div>
         <%= f.collection_select(:ski_resort_id, SkiResort.all, :id, :name, {}, {class:"select-box", id:"congestion-ski-resort"}) %>
       <%# /スキー場名 %>
-        <%= f.text_field :latitude, class:"latitude-input", id:"congestion-latitude" %>
-        <%= f.text_field :longitude, class:"longitude-input", id:"congestion-longitude" %>
       <%# 状況 %>
         <div class="items-explain">
           <div class="weight-bold-text">

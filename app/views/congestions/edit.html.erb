@@ -1,10 +1,72 @@
-<div class="main">
-  <div class="inner">
-    <div class="form__wrapper">
-      <h2 class="page-heading">スタック情報を編集してください</h2>
+<script>
+function test() {
+    navigator.geolocation.getCurrentPosition(test2);
+}
 
-      <%= render partial: "form" %>
+function test2(position) {
+    var geo_text = "緯度:" + position.coords.latitude + "\n";
+        geo_text += "経度:" + position.coords.longitude + "\n";
+      document.getElementById( "congestion-latitude" ).value = position.coords.latitude ;
+      document.getElementById( "congestion-longitude" ).value = position.coords.longitude ;
+}
+</script>
 
+<body>
+  <div class="main">
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">スタック情報を編集</h2>
+      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+
+      <%= form_with model: @congestion, local: true do |f| %>
+      <button onclick="test()">現在地を取得する</button>
+      <%= f.text_field :latitude, class:"latitude-input", id:"congestion-latitude" %>
+      <%= f.text_field :longitude, class:"longitude-input", id:"congestion-longitude" %>
+
+      <%# スキー場名 %>
+        <div class="weight-bold-text">
+          スキー場
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:ski_resort_id, SkiResort.all, :id, :name, {}, {class:"select-box", id:"congestion-ski-resort"}) %>
+      <%# /スキー場名 %>
+      <%# 状況 %>
+        <div class="items-explain">
+          <div class="weight-bold-text">
+          状況
+          <span class="indispensable">任意</span>
+          </div>
+        <%= f.text_area :situation, class:"situation-text", id:"situation-info", placeholder:"状況の説明（必須 1,000文字まで）" ,rows:"7" ,maxlength:"1000" %>
+        </div>
+      <%# /状況 %>
+      <%# 待ち時間 %>
+        <div class="waiting-content">
+          <div class="waiting-text">
+          待ち時間
+          <span class="indispensable">必須</span>
+          </div>
+        <%= f.text_field :waiting, class:"waiting-input", id:"congestion-waiting", placeholder:"例）60" %>
+        <span class="waiting-minutes">分</span>
+        </div>
+      <%# /待ち時間 %>
+      <%# 画像 %><%# /画像 %>
+        <div class="img-upload">
+          <div class="weight-bold-text">
+          画像
+          <span class="indispensable">任意</span>
+          </div>
+          <div class="click-upload">
+          <p>クリックしてファイルをアップロード</p>
+          <%= f.file_field :image, id:"congestion-image" %>
+          </div>
+        </div>
+  <%# 下部ボタン %>
+        <div class="congestion-btn-contents">
+          <%= f.submit "投稿する" ,class:"form-btn" %>
+          <%=link_to 'もどる', root_path, class:"back-btn" %>
+        </div>
+  <%# /下部ボタン %>
+      <% end %>
+      </div>
     </div>
   </div>
-</div>
+</body>
