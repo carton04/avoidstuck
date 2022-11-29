@@ -92,3 +92,11 @@ a {
   max-width: 680px;
   padding: 0 15px;
 }
+
+.congestion__user {
+  display: block;
+  width: 100vh;
+  font-size: 20px;
+  color: #999;
+  text-align: right;
+}

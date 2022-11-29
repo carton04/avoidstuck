@@ -11,8 +11,8 @@
     <div class="container px-4 py-5" id="custom-cards">
       <h2 class="pb-2 border-bottom">詳細状況</h2>
       <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-      <p class="detail__message "style='width: 100vh; height: 10vh;'><%= @congestion.situation %></p>
-        <div class="col"style='width: 100vh; height: 70vh;'>
+      <p class="detail__message" style=width: 100vh; height: 10vh;><%= @congestion.situation %></p>
+        <div class="col" style='width: 100vh; height: 70vh;'>
           <div class="card card-cover h-100 w-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
             <div class="d-flex flex-column h-100 text-white text-shadow-1">
               <div id="map" style='width: 100%; height: 100%;'></div>
@@ -30,15 +30,15 @@
             </div>
           </div>
         </div>
-        <%= link_to "by " + @congestion.user.nickname, "#", class: :congestion__user %>
-        <div class="congestion__image">
+        <div class="congestion__user" style='width: 100vh;padding-right: 30px;margin-top: 0px;"'><%= "by " + @congestion.user.nickname %></div>
+        <div class="congestion__image" style='width: 100vh;'>
         <% if @congestion.image.present? %>
           <%= image_tag @congestion.image.variant(resize: '500x500') %>
         <% end %>
-        </div>
+        </div><br>
         <% if user_signed_in? && current_user.id == @congestion.user_id %>
-          <div class="congestion__manage">
-            <%= link_to "編集する", edit_congestion_path(@congestion.id), class: :congestion__btn %>
+          <div class="congestion__manage" style='width: 100vh;'>
+            <%= link_to "編集する", edit_congestion_path(@congestion.id), class: :congestion__btn %><br>
             <%= link_to "削除する", congestion_path(@congestion.id), method: :delete, class: :congestion__btn %>
           </div>
         <% end %>
