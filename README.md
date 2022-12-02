@@ -55,4 +55,4 @@ https://docs.google.com/spreadsheets/d/1AE68r5MZd7iHtCUW1pAJUkY0x89ThRmQc9UWF_AF
 
 # 工夫したポイント
 googlemapAPIの表示を現在地ボタンひとつで保存できるようにしました。  
-Webブラウザのgeolocationオブジェクトを用いて、javascriptでユーザーの現在地（経度・緯度）を取得し、投稿ページからボタンを押すことでフォームに位置情報が入力されるようにしました。
+ユーザーが現在地の住所を調べて入力してもらうのは使いづらいアプリケーションと考えて、Webブラウザのgeolocationオブジェクトを用いて、javascriptでユーザーの現在地（経度・緯度）を取得し、投稿ページからボタンを押すことでフォームに位置情報が入力されるようにしました。
