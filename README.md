@@ -21,34 +21,38 @@ http://18.182.213.189/
 1.一覧ページから情報をクリックし詳細を確認する
 
 # アプリケーションを作成した背景
-スキー場への道中でスタックに遭遇した自身の経験から、同様の問題を抱えている方も多いと推測し、投稿から回避できるアプリケーションを開発することにした。
+スキー場への道中でスタックに遭遇した自身の経験から、同様の問題を抱えている方も多いと推測し、投稿から回避できるアプリケーションを開発することにしました。
 
 # 洗い出した要件
 https://docs.google.com/spreadsheets/d/1AE68r5MZd7iHtCUW1pAJUkY0x89ThRmQc9UWF_AFv6Y/edit#gid=1785908763
 
 # 実装予定の機能
-解決ボタン機能
-お気に入り機能
-いいね機能
-コメント機能
-フォロー機能
+解決ボタン機能  
+お気に入り機能  
+いいね機能  
+コメント機能  
+フォロー機能  
 # データベース設計
+![](er.drawio.svg)
 
 # 画面遷移図
+![](画面遷移図.drawio.svg)
 
 # 開発環境
 - Ruby
 - Ruby on Rails
-- 
+- MariaDB
 - Github
 - AWS
 - Visual Studio Code
 
 # ローカルでの動作方法
 以下のコマンドを順に実行。
-% git clone
+% git clone https://github.com/carton04/avoidstuck.git
 % cd avoidstuck
 % bundle install
 % yarn install
 
 # 工夫したポイント
+googlemapAPIの表示を現在地ボタンひとつで保存できるようにしました。  
+ユーザーが現在地の住所を調べて入力してもらうのは使いづらいアプリケーションと考えて、Webブラウザのgeolocationオブジェクトを用いて、javascriptでユーザーの現在地（経度・緯度）を取得し、投稿ページからボタンを押すことでフォームに位置情報が入力されるようにしました。
