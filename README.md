@@ -31,10 +31,10 @@ https://docs.google.com/spreadsheets/d/1AE68r5MZd7iHtCUW1pAJUkY0x89ThRmQc9UWF_AF
 
 # 実装予定の機能
 解決ボタン機能  
+検索機能
 お気に入り機能  
-いいね機能  
-コメント機能  
 フォロー機能  
+
 # データベース設計
 ![](er.drawio.svg)
 
