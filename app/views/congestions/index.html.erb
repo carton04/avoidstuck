@@ -11,7 +11,21 @@
       <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
     </symbol>
   </svg>
-
+  <script>
+    function initMap() {
+      <% @congestions.each_with_index do |congestion,i| %>
+      var latlng = new google.maps.LatLng(<%= congestion.latitude %>,<%= congestion.longitude %>);
+      map = new google.maps.Map(document.getElementById('map<%=i%>'), {
+          center: {lat: <%= congestion.latitude %>, lng: <%= congestion.longitude %>},
+          zoom: 9
+        });
+       marker = new google.maps.Marker({
+          position: latlng,
+          map: map
+        });
+      <% end %>
+    }
+  </script>
   <main>
     <div class="container px-4 py-5" id="custom-cards">
       <h2 class="pb-2 border-bottom">Stuck</h2>
@@ -47,23 +61,6 @@
         <% end %>
       </div>
     </div>
-<script>
-    function initMap() {
-      <% @congestions.each_with_index do |congestion,i| %>
-      var latlng = new google.maps.LatLng(<%= congestion.latitude %>,<%= congestion.longitude %>);
-      map = new google.maps.Map(document.getElementById('map<%=i%>'), {
-          center: {lat: <%= congestion.latitude %>, lng: <%= congestion.longitude %>},
-          zoom: 9
-        });
-       marker = new google.maps.Marker({
-          position: latlng,
-          map: map
-        });
-      <% end %>
-    }
-
-</script>
-
   </main>
 </body>
 
