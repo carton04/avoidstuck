@@ -6,7 +6,7 @@ RSpec.describe Congestion, type: :model do
   end
 
   describe '投稿保存' do
-    context 'スタック情報を投稿できる場合とき' do
+    context 'スタック情報を投稿できる場合のとき' do
       it 'すべてのフォームの入力がされている' do
         expect(@congestion).to be_valid
       end
