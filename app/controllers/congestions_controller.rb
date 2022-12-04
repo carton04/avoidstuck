@@ -21,6 +21,9 @@ class CongestionsController < ApplicationController
 
   def show
     @user = User.new
+    @comment = Comment.new
+    @comments = @congestion.comments.includes(:user)
+    @user = User.new
   end
 
   def edit
