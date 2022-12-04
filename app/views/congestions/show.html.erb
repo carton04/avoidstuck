@@ -74,7 +74,7 @@
       var latlng = new google.maps.LatLng(<%= @congestion.latitude %>,<%= @congestion.longitude %>);
       map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: <%= @congestion.latitude %>, lng: <%= @congestion.longitude %>},
-          zoom: 13
+          zoom: 14
         });
        marker = new google.maps.Marker({
           position: latlng,
