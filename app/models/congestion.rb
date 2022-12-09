@@ -15,6 +15,7 @@ class Congestion < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :solution, dependent: :destroy
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :ski_resort
