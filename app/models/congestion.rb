@@ -15,8 +15,12 @@ class Congestion < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :solution, dependent: :destroy
+  has_many :solutions, dependent: :destroy
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :ski_resort
+
+  def solved_by?(user)
+    solutions.where(user_id: user.id).exists?
+  end
 end

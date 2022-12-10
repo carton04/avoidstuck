@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_09_111440) do
+ActiveRecord::Schema.define(version: 2022_12_10_090441) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -56,12 +56,10 @@ ActiveRecord::Schema.define(version: 2022_12_09_111440) do
   end
 
   create_table "solutions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "congestion_id", null: false
+    t.integer "user_id", null: false
+    t.integer "congestion_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["congestion_id"], name: "index_solutions_on_congestion_id"
-    t.index ["user_id"], name: "index_solutions_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -81,6 +79,4 @@ ActiveRecord::Schema.define(version: 2022_12_09_111440) do
   add_foreign_key "comments", "congestions"
   add_foreign_key "comments", "users"
   add_foreign_key "congestions", "users"
-  add_foreign_key "solutions", "congestions"
-  add_foreign_key "solutions", "users"
 end
