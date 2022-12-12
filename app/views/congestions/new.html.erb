@@ -2,23 +2,21 @@
 function test() {
     navigator.geolocation.getCurrentPosition(test2);
 }
-
 function test2(position) {
     var geo_text = "緯度:" + position.coords.latitude + "\n";
         geo_text += "経度:" + position.coords.longitude + "\n";
-      document.getElementById( "congestion-latitude" ).value = position.coords.latitude ;
-      document.getElementById( "congestion-longitude" ).value = position.coords.longitude ;
+        alert(geo_text);
+        document.getElementById( "congestion-latitude" ).value = position.coords.latitude ;
+        document.getElementById( "congestion-longitude" ).value = position.coords.longitude ;
 }
 </script>
-
 <body>
   <div class="main">
     <div class="container px-4 py-5" id="custom-cards">
-      <h2 class="pb-2 border-bottom">スタック情報を入力</h2>
+      <h2 class="pb-2 border-bottom">スタック情報を編集</h2>
       <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-
-      <%= form_with model: @congestion, local: true do |f| %>
       <button onclick="test()">現在地を取得する</button>
+      <%= form_with model: @congestion, local: true do |f| %>
       <%= f.text_field :latitude, class:"latitude-input", id:"congestion-latitude" %>
       <%= f.text_field :longitude, class:"longitude-input", id:"congestion-longitude" %>
 
@@ -30,7 +28,7 @@ function test2(position) {
         <%= f.collection_select(:ski_resort_id, SkiResort.all, :id, :name, {}, {class:"select-box", id:"congestion-ski-resort"}) %>
       <%# /スキー場名 %>
       <%# 状況 %>
-        <div class="congestion-explain">
+        <div class="items-explain">
           <div class="weight-bold-text">
           状況
           <span class="indispensable">任意</span>
@@ -48,7 +46,7 @@ function test2(position) {
         <span class="waiting-minutes">分</span>
         </div>
       <%# /待ち時間 %>
-      <%# 画像 %>
+      <%# 画像 %><%# /画像 %>
         <div class="img-upload">
           <div class="weight-bold-text">
           画像
@@ -59,13 +57,12 @@ function test2(position) {
           <%= f.file_field :image, id:"congestion-image" %>
           </div>
         </div>
-      <%# /画像 %>
-      <%# 下部ボタン %>
+  <%# 下部ボタン %>
         <div class="congestion-btn-contents">
           <%= f.submit "投稿する" ,class:"form-btn" %>
           <%=link_to 'もどる', root_path, class:"back-btn" %>
         </div>
-      <%# /下部ボタン %>
+  <%# /下部ボタン %>
       <% end %>
       </div>
     </div>
