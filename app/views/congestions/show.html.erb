@@ -58,6 +58,21 @@
           </div>
         <% end %>
         <div class="congestion__comments" style='width: 100%;'>
+        <ul class="comments_lists">
+          <%# 投稿に紐づくコメントを一覧する処理 %>
+          <% @comments.each do |comment| %>
+            <li class="comments_list">
+              <%= comment.content %>
+              <%= link_to comment.user.nickname, "/users/#{comment.user_id}", class: :comment_user%>
+              <% if user_signed_in? %>
+              <% if current_user.id == comment.user_id %>
+                <%=link_to "削除", congestion_comment_path(@congestion, comment), method: :delete %>
+              <% end %>
+              <% end %>
+            </li>
+          <% end %>
+          <%# // 投稿に紐づくコメントを一覧する処理 %>
+        </ul>
         <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
         <% if user_signed_in? %>
           <%= form_with model: [@congestion, @comment], local: true do |f|%>
@@ -71,17 +86,6 @@
           <% end %>
         <% end %>
         <%# // ログインしているユーザーには上記を表示する %>
-        <ul class="comments_lists">
-          <%# 投稿に紐づくコメントを一覧する処理 %>
-          <% @comments.each do |comment| %>
-            <li class="comments_list">
-              <%= comment.content %>
-              <%= link_to comment.user.nickname, "/users/#{comment.user_id}", class: :comment_user%>
-            </li>
-          <% end %>
-          <%# // 投稿に紐づくコメントを一覧する処理 %>
-        </ul>
-        
 <script>
     function initMap() {
       var latlng = new google.maps.LatLng(<%= @congestion.latitude %>,<%= @congestion.longitude %>);

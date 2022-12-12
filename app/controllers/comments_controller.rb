@@ -1,13 +1,19 @@
 class CommentsController < ApplicationController
   def create
+    @congestion = Congestion.find(params[:congestion_id])
     @comment = Comment.new(comment_params)
     if @comment.save
       redirect_to congestion_path(@comment.congestion)
     else
-      @congestion = @comment.congestion
-      @comments = @congestion.comments
       render "congestions/show"
     end
+  end
+
+  def destroy
+    @congestion = Congestion.find(params[:congestion_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to congestion_path
   end
 
   private
